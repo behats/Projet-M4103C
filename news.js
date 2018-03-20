@@ -4,15 +4,36 @@ var recherche_courante_news=[]; // tableau d'objets de type resultats (avec titr
 
 function ajouter_recherche()
 {
+	var elem = document.getElementById('zone_saisie');
+	if(elem.value && (recherches.indexOf(elem.value)==-1)){
 
+		var recherche = document.getElementById('recherches-stockees');
+		var paragraphe = document.createElement('p');
+
+		var label = document.createElement('label');
+		label.innerText = elem.value;
+		label.setAttribute('onClick', 'selectionner_recherche(this)');
+
+		var cx = document.createElement('img');
+		cx.src = "croix30.jpg";
+		cx.class = 'icone-croix';
+		cx.setAttribute('onClick', 'supprimer_recherche(this)');
+
+		paragraphe.appendChild(label);
+		paragraphe.appendChild(cx);
+		recherche.appendChild(paragraphe);
+
+		recherches.push(elem.value);
+		console.log(recherches);
+	}
 }
 
 function supprimer_recherche(e)
-{ 
-
-
+{
+	var parent = e.parentElement;
+	var elem = document.getElementById('recherches-stockees');
+	elem.removeChild(parent);
 }
-
 
 function selectionner_recherche(e)
 { 
