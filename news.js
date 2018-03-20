@@ -24,7 +24,6 @@ function ajouter_recherche()
 		recherche.appendChild(paragraphe);
 
 		recherches.push(elem.value);
-		console.log(recherches);
 	}
 }
 
@@ -33,11 +32,15 @@ function supprimer_recherche(e)
 	var parent = e.parentElement;
 	var elem = document.getElementById('recherches-stockees');
 	elem.removeChild(parent);
+	var rm = recherches.indexOf(parent.firstChild.innerText);
+	recherches.splice(rm, 1);
 }
 
-function selectionner_recherche(e)
-{ 
 
+function selectionner_recherche(e)
+{
+	recherche_courante = e.innerText;
+	document.getElementById("zone_saisie").value = e.innerText;*
 }
 
 
