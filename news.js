@@ -97,7 +97,7 @@ function maj_resultats(res)
 	let resultats = document.getElementById('resultats');
 	JSON.parse(res).forEach(function(news){
 		let ElemNouv= '<p class="titre_result"><a class="titre_news" href="' + decodeEntities(news.url) + '" target="_blank">' + decodeEntities(news.titre) + '</a><span class="date_news" alt="' + news.date + '">' + format(news.date) + '</span><span class="action_news" ';
-		console.log(news);
+		//console.log(news);
 		if(indexOf(recherche_courante_news, news) != -1){
 			ElemNouv += 'onclick="supprimer_nouvelle(this)"><img src="disk15.jpg"/></span></p>';
 		}else{
