@@ -48,49 +48,32 @@ function indexOf(t,o)
 		if (trouve) {return (i-1);}
 		else { return -1; }
 }
-
 //-----------------------------PERSO-----------------------------//
 
-function getCookie(cname)
-	{
-    	var name = cname + "=";
-    	var ca = document.cookie.split(';');
-    	for(var i=0; i<ca.length; i++)
-    	{
-        	var c = ca[i];
-        	while (c.charAt(0)==' ') c = c.substring(1);
-        	if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
-    	}
-    	return "";
-	}
-
-
-function setCookie(cname, cvalue, exDays)
+//SET la valeur de doc.cookie
+function setCookie(cookieName, cvalue, exDays)
 	{
     	var ck = new Date();
     	ck.setTime(ck.getTime() + (exDays*24*60*60*1000));
     	var expires = "expires="+ck.toUTCString();
-    	document.cookie = cname + "=" + cvalue + "; " + expires + "; path=/";
+    	document.cookie = cookieName + "=" + cvalue + "; " + expires + "; path=/";
 	}
 
-  function setCookie(name, value, exDays){
-  	let ck = new Date();
-  	ck.setTime(ck.getTime() + (exDays*24*60*60*1000));
-  	document.cookie = name + '=' + value + ';expires=' + d.toUTCString();
-  }
 
+// GET le cookie avec le bon nom, ou null si il n'existe pas
   function getCookie(name){
   	let cookiesArray = decodeURIComponent(document.cookie).split(';')
   	for(i = 0; i< cookiesArray.length; i++){
   		let cookie = cookiesArray[i];
-  		let RegExp =  RegExp('^\\s*' + name + '\\s*=', 'g');
-  		if(cookie.match(reg)){
-  			return cookie.replace(reg, '');
+  		let rgx =  RegExp('^\\s*' + name + '\\s*=', 'g');
+  		if(cookie.match(rgx)){
+  			return cookie.replace(rgx, '');
   		}
   	}
   	return null;
   }
 
+// créer un methode AJAX, avec une methode GET
   function ajax_get_request(url, async, callback){
   	var xhrv = new XMLHttpRequest();
   	xhrv.onreadystatechange = function(){
